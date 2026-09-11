@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="calc-favicon.png" />
+    <link rel="apple-touch-icon" href="favicon.png" />
     <link rel="stylesheet" href="calculator.css" />
     <script src="main.js" defer></script>
     <title>Calculator</title>
@@ -17,7 +19,12 @@
     <h1>Calculator</h1>
     <div id="calculatorBody">
       <div class="calculatorBodywrapper">
-        <div class="display">
+        <div
+          class="display"
+          tabindex="0"
+          id="display"
+          aria-label="Calculator Display"
+        >
           <span class="displayText"></span>
         </div>
         <div class="buttons">

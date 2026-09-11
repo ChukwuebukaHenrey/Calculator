@@ -1,6 +1,7 @@
 # Scientific Web Calculator
 
 An interactive scientific calculator built with vanilla JavaScript, HTML5, and custom CSS. This project goes beyond standard basic four-function calculators by implementing advanced scientific operations, trigonometric transformations, and mathematical constants.
+It's a project given to me by THE ODIN PROJECT btw
 
 ---
 

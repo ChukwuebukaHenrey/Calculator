@@ -28,6 +28,9 @@ const naLogButton = document.getElementById("in");
 const rounding = document.getElementById("roundTo");
 let expression = "";
 
+// THE COMMENTS ARE EXPLANATIONS OF THR CODE - I HAD TO PUT IT BECAUSE IT WAS CONFUSING AT FIRST
+
+display.focus(); // I added this line to ensure that the display element is focused when the page loads, allowing for immediate keyboard input.
 const addNumbers = (...values) =>
   values.reduce((total, value) => total + value, 0);
 
@@ -47,7 +50,7 @@ const divideNumbers = (...values) =>
 const calculateFactorial = (n) => {
   let result;
   if (n < 0) {
-    return "Factorial not defined for negs";
+    return "Factorial not defined for negatives";
   }
   if (!Number.isInteger(n)) {
     return "invalid input";
@@ -493,8 +496,61 @@ const evaluate = (expression) => {
   return values.pop();
 };
 
-equalsButton.addEventListener("click", () => {
+document.addEventListener("keydown", (event) => {
+  if (event.key >= 0 && event.key <= 9) {
+    expression += event.key;
+    displayText.textContent += event.key;
+  }
+  if (event.key === "-") {
+    expression += "-";
+    displayText.textContent += event.key;
+  }
+  if (event.key === "/") {
+    expression += "/";
+    displayText.textContent += event.key;
+  }
+  if (event.key === "*") {
+    expression += event.key;
+    displayText.textContent += event.key;
+  }
+  if (event.key === "+") {
+    expression += "+";
+    displayText.textContent += event.key;
+  }
+  if (event.key === "^") {
+    expression += "^";
+    displayText.textContent += event.key;
+  }
+  if (event.key === "(") {
+    expression += "(";
+    displayText.textContent += event.key;
+  }
+  if (event.key === ")") {
+    expression += ")";
+    displayText.textContent += event.key;
+  }
+  if (event.key === ")") {
+    expression += ")";
+    displayText.textContent += event.key;
+  }
+  if (event.key === "Escape") {
+    displayText.textContent = "";
+    expression = "";
+  }
+  if (event.key === "Backspace") {
+    displayText.textContent = displayText.textContent.slice(0, -1);
+    expression += displayText.textContent.slice(0, -1);
+    console.log(expression);
+  }
+  if (event.key === "Enter") {
+    calculateResult();
+  }
+});
+
+const calculateResult = () => {
   const result = evaluate(expression);
   displayText.textContent = result;
   expression = String(result);
-});
+};
+
+equalsButton.addEventListener("click", calculateResult);
